@@ -2,7 +2,6 @@
 
 
 #include "TRCharacter.h"
-#include "TRAttributeSet.h"
 
 // Sets default values
 ATRCharacter::ATRCharacter()
@@ -16,14 +15,7 @@ ATRCharacter::ATRCharacter()
 // Called when the game starts or when spawned
 void ATRCharacter::BeginPlay()
 {
-	Super::BeginPlay();
-	
-	if (AbilitySystemComp)
-	{
-		AttributeSetComp = AbilitySystemComp->GetSet<UTRAttributeSet>();
-
-		AbilitySystemComp->GetGameplayAttributeValueChangeDelegate(AttributeSetComp->GetAbilityValueAttribute()).AddUObject(this, &ATRCharacter::OnAbilityValueChangedNative);
-	}
+	Super::BeginPlay();	
 }
 
 // Called every frame
@@ -52,16 +44,3 @@ void ATRCharacter::InitializeAbility(TSubclassOf<UGameplayAbility> AbilityToGet,
 		AbilitySystemComp->InitAbilityActorInfo(this, this);
 	}
 }
-
-void ATRCharacter::GetAbilityValue(float& AbilityValue)
-{
-	AbilityValue = AttributeSetComp->GetAbilityValue();
-}
-
-
-void ATRCharacter::OnAbilityValueChangedNative(const FOnAttributeChangeData& Data)
-{
-	OnAbilityValueChanged(Data.OldValue, Data.NewValue);
-}
-
-

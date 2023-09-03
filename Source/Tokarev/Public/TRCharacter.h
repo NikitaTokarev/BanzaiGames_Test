@@ -37,17 +37,5 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Ability System")
 	void InitializeAbility(TSubclassOf<UGameplayAbility> AbilityToGet, int32 AbilityLevel);
 
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const { return AbilitySystemComp; };
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Ability System")
-	const class UTRAttributeSet* AttributeSetComp;
-
-	UFUNCTION(BlueprintPure, Category = "Ability System")
-	void GetAbilityValue(float& AbilityValue);
-
-	void OnAbilityValueChangedNative(const FOnAttributeChangeData& Data);
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "Ability System")
-	void OnAbilityValueChanged(float OldValue, float NewValue);
-	
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const { return AbilitySystemComp; };	
 };
