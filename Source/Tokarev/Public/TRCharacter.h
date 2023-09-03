@@ -49,4 +49,5 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Ability System")
 	void OnAbilityValueChanged(float OldValue, float NewValue);
+	
 };
